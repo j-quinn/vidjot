@@ -8,6 +8,9 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
+const db = require('./config/database');
+
+
 const app = express();
 
 // Load routes
@@ -19,9 +22,6 @@ require('./config/passport')(passport);
 
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
-
-// DB Config
-const db = require('./config/database');
 
 // Connect to mongoose
 mongoose.connect(db.mongoURI, {
